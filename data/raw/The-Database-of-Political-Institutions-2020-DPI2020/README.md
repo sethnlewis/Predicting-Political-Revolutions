@@ -6,3 +6,10 @@ Source: The Database of Political Institutions 2020 (DPI2020)
 
 
 Data download: https://publications.iadb.org/en/database-political-institutions-2020-dpi2020
+
+
+Citation:
+Cruz, Cesi, Philip Keefer, and Carlos Scartascini. 2021. Database of Political Institutions 2020.
+Washington, DC: Inter-American Development Bank Research Department.
+
+Distributed by Washington, DC: Inter-American Development Bank Numbers for Development.
