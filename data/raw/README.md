@@ -23,3 +23,18 @@
 
 
 fMM66m-S2phwxZ2EC38u
+
+
+
+### Ruled out:
+
+##### Center for Systemic Peace
+Too simplified to be useful. Dates only have years. Without more granularity, it cannot be determined whether a protest was a cause or an effect of the revolution / event. Also, doesn't have quite the events I'm looking for.
+
+##### Replication Data for "Revolutionary Pathways" by Colgan and Lucas
+Very valuable data, but it stops in 2004 so doesn't fit these needs
+
+##### ICB Project
+Source: https://sites.duke.edu/icbdata/data-collections/
+
+Determined unusable
