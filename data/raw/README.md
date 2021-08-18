@@ -38,3 +38,9 @@ Very valuable data, but it stops in 2004 so doesn't fit these needs
 Source: https://sites.duke.edu/icbdata/data-collections/
 
 Determined unusable
+
+
+##### ACLED Data
+Source: https://acleddata.com/data-export-tool/
+
+Seemingly very valuable data that could be used for a different project, but as is it's less relevant. They also only provide the last 3 years of data for public access. Historical data is available upon request (payment?)
