@@ -5,7 +5,7 @@ from sklearn.metrics import f1_score, precision_score, accuracy_score, recall_sc
 from sklearn.metrics import plot_confusion_matrix
 
 
-def evaluate_model_performance(grid, x_test, y_test):
+def evaluate_model_performance(grid, x_test, y_test, title=None):
     
     # Calculate predictions
     pred = grid.best_estimator_.predict(x_test)
@@ -16,6 +16,10 @@ def evaluate_model_performance(grid, x_test, y_test):
     # Display confusion matrix
     plt.figure()
     plot_confusion_matrix(grid.best_estimator_, x_test, y_test)
+    
+    if title:
+        plt.title(title)
+    
     plt.show();
     
     return grid.best_estimator_

@@ -72,7 +72,7 @@ def get_shap_df(df_train, target_train, df_test):
     return x_train_final, y_train_final, df_test_expanded_scaled
 
 
-def produce_shap_plot(df_train, target_train, df_test, target_test, model_shap):
+def produce_shap_plot(df_train, target_train, df_test, target_test, model_shap, title=None):
     
     # Gather encoded, scaled, resampled dataframes
     df_train, target_train, df_test = get_shap_df(df_train, target_train, df_test)
@@ -91,4 +91,8 @@ def produce_shap_plot(df_train, target_train, df_test, target_test, model_shap):
     # plot findings
     plt.figure()
     shap.summary_plot(shap_values, df_test, show=False, plot_size=(16, 12))
+    
+    if title:
+        plt.title(title)
+    
     plt.show();
