@@ -1,3 +1,4 @@
+# Import functionally necessary packages
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -6,7 +7,21 @@ import shap
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from imblearn.over_sampling import SMOTE
 
+
 def custom_plot_matrix(df, max_corr=None):
+    '''
+    
+    
+    Parameters:
+    -----------
+    df : 
+    max_corr : 
+
+    Returns:
+    --------
+    None
+    '''
+    
     ## Compute the correlation matrix
     corr = df.corr()
 
@@ -20,7 +35,7 @@ def custom_plot_matrix(df, max_corr=None):
     if max_corr == None:
         max_corr = corr.replace(1.0, 0).abs().max().max()
 
-    # Draw the heatmap with the mask and correct aspect ratio
+    # Draw the heatmap with the mask and scaled reasonably
     SIZE = 1.8
     plt.figure(figsize=(SIZE*corr.shape[1]/2, SIZE*corr.shape[1]/3))
     sns.heatmap(corr, mask=mask, cmap=cmap, center=0, vmax=max_corr, vmin=-max_corr, 
@@ -32,13 +47,33 @@ def custom_plot_matrix(df, max_corr=None):
 
 # ADAPTED FROM CODE FOUND HERE: https://towardsdatascience.com/explain-any-models-with-the-shap-values-use-the-kernelexplainer-79de9464897a
 def get_shap_df(df_train, target_train, df_test):
+    '''
     
-    df_train.reset_index(inplace=True, drop=True)
-    df_test.reset_index(inplace=True, drop=True)
+    
+    Parameters:
+    -----------
+    df_train : 
+    target_train : 
+    df_test : 
+
+    Returns:
+    --------
+    x_train_final : 
+    y_train_final : 
+    df_test_expanded_scaled : 
+    '''
+    
+    
+    
+#     # Reset indices
+#     df_train.reset_index(inplace=True, drop=True)
+#     df_test.reset_index(inplace=True, drop=True)
     
     # CATEGORICALS
     df_train_cat = df_train.select_dtypes('object')
     df_test_cat = df_test.select_dtypes('object')
+    
+    # One hot encode
     ohe = OneHotEncoder(sparse=False, handle_unknown='ignore')
     ohe.fit(df_train_cat)
     df_train_cat_ohe = ohe.transform(df_train_cat)
@@ -52,7 +87,6 @@ def get_shap_df(df_train, target_train, df_test):
     # COMBINE CATEGORICAL AND NUMERIC
     df_train_expanded = pd.DataFrame(df_train_cat_ohe, columns=names_ohe)
     df_test_expanded = pd.DataFrame(df_test_cat_ohe, columns=names_ohe)
-    
     df_train_expanded[df_train_num.columns] = df_train_num
     df_test_expanded[df_test_num.columns] = df_test_num
     
@@ -66,13 +100,33 @@ def get_shap_df(df_train, target_train, df_test):
     df_train_expanded_scaled = pd.DataFrame(df_train_expanded_scaled, columns=df_train_expanded.columns)
     df_test_expanded_scaled = pd.DataFrame(df_test_expanded_scaled, columns=df_test_expanded.columns)
     
+    # Apply resampling
     sm = SMOTE()
     x_train_final, y_train_final = sm.fit_resample(df_train_expanded_scaled, target_train)    
     
+    # Return encoded, scaled, resampled versions of inputs
     return x_train_final, y_train_final, df_test_expanded_scaled
 
 
+
 def produce_shap_plot(df_train, target_train, df_test, target_test, model_shap, title=None):
+    '''
+    
+    
+    Parameters:
+    -----------
+    df_train : 
+    target_train : 
+    df_test : 
+    target_test : 
+    model_shap : 
+    title : 
+
+    Returns:
+    --------
+    None
+    '''
+    
     
     # Gather encoded, scaled, resampled dataframes
     df_train, target_train, df_test = get_shap_df(df_train, target_train, df_test)
@@ -88,10 +142,11 @@ def produce_shap_plot(df_train, target_train, df_test, target_test, model_shap, 
     explainer = shap.TreeExplainer(model_shap)
     shap_values = explainer.shap_values(df_test)
     
-    # plot findings
+    # Plot findings
     plt.figure()
     shap.summary_plot(shap_values, df_test, show=False, plot_size=(16, 12))
     
+    # Add figure title if provided by user
     if title:
         plt.title(title)
     

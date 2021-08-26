@@ -1,10 +1,30 @@
+# Import functionally necessary packages
 import pandas as pd
 
-#1. Create column for "next regime change date"
+
+def create_target(protests, regimes):
+    '''
+    
+    
+    Parameters:
+    -----------
+    protests : 
+    regimes : 
+
+    Returns:
+    --------
+    working_df : 
+    '''
+    
+    
+    
+    #1. Create column for "next regime change date"
 #2. Create column for "days until next regime change"
 #3. Create target column for [above column] < 365 (try for other targets too)
-def create_target(protests, regimes):
-
+    
+    
+    
+    
     # Create new dataframe to contain results throughout loop
     working_df = protests[['scode', 'startdate']].copy()
     working_df['parcomp'] = None
