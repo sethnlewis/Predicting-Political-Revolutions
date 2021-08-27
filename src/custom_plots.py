@@ -156,7 +156,7 @@ def produce_shap_plot(df_train, target_train, df_test, target_test, model_shap, 
     
     # Add figure title if provided by user
     if title:
-        plt.title(title)
+        plt.title(title, fontsize=20)
         
     if savepath:
         plt.savefig(savepath)

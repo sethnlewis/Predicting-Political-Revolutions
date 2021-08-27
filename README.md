@@ -1,4 +1,4 @@
-# A Data-Based Understanding of Political Revolutions
+# Predicting Political Revolutions
 Political upheavals have been ever present throughout humanity. Political leaders shape the context for everything we know. For that reason, we as a society need to generate a concrete understanding of when a revolution or political change is imminent. This analysis seeks to forecast whether a given protest will lead to a revolution within 90 days. 
 
 The stakeholders for this analysis are wide reaching, but it is most relevant to political organizers and leadership. They can use this approach to best understand where efforts are best focused and most likely to lead to an impact. 
@@ -11,10 +11,10 @@ The stakeholders for this analysis are wide reaching, but it is most relevant to
 ├── data
 │   ├── processed                                <-- SQL files containing processed data
 │   └── raw                                      <-- Original (immutable) data dump
-        ├── Mass-Mobilization-Protests           <-- Data source #1 
-        ├── Polity-Project                       <-- Data source #2
-        ├── Database-of-Political-Institutions   <-- Data source #3
-        
+│       ├── Mass-Mobilization-Protests           <-- Data source #1 
+│       ├── Polity-Project                       <-- Data source #2
+│       └── Database-of-Political-Institutions   <-- Data source #3
+│       
 ├── images                   <-- Figures used in presentation and notebooks
 │
 ├── notebooks                <-- Jupyter Notebooks for exploration and presentation
@@ -30,9 +30,10 @@ The stakeholders for this analysis are wide reaching, but it is most relevant to
 
 ```
 
-## Project Structure
-Given the complex nature of combining three separate datasets from distinct sources, the analysis was conducted in five different notebooks. The first three "*cleaning_xxx.ipynb*" notebooks clean one dataset of raw data alongside conducting feature engineering and selection. Each of these notebooks exports the final version of that dataset in a form ready to be combined with all others. Next, the "*MODEL.ipynb*" notebook combines these three SQL databases while also conducting substantial feature selection and engineering before beginning the main purpose of the notebook: modeling. The fourth notebook is "*EDA.ipynb*". It is used for exploratory analysis of features. The final notebook, "*FINAL SUMMARY NOTEBOOK.ipynb*" is a high-level summary of each of the other four notebooks, extracting key points from each.
+The main high-level Jupyter notebook for this project can be found [here](notebooks/FINAL_SUMMARY_NOTEBOOK.ipynb). The in-depth modeling notebook can be found [here](notebooks/MODEL.ipynb).
 
+## Project Structure
+Given the complex nature of combining three separate datasets from distinct sources, the analysis was conducted in five different notebooks. The first three cleaning notebooks - [cleaning_protests_dataset.ipynb](notebooks/cleaning_protests_dataset.ipynb), [cleaning_regime_changes_dataset.ipynb](notebooks/cleaning_regime_changes_dataset.ipynb), and [cleaning_governments_dataset.ipynb](notebooks/cleaning_governments_dataset.ipynb) - clean one dataset of raw data alongside conducting feature engineering and selection. Each of these notebooks exports the final version of that dataset in a form ready to be combined with all others. Next, the [MODEL.ipynb](notebooks/MODEL.ipynb) notebook combines these three SQL databases while also conducting substantial feature selection and engineering before beginning the main purpose of the notebook: modeling. The fourth notebook, [EDA.ipynb](notebooks/EDA.ipynb), is used for exploratory analysis of features. The final notebook, [FINAL_SUMMARY_NOTEBOOK.ipynb](notebooks/FINAL_SUMMARY_NOTEBOOK.ipynb) is a high-level summary of each of the other four notebooks, extracting key points from each.
 
 
 ---
@@ -70,7 +71,7 @@ The third dataset is provided by the Inter-American Development Bank (IDB). "The
 
 #### Citation:
 
-Cruz, Cesi, Philip Keefer, and Carlos Scartascini. 2021. Database of Political Institutions 2020. Washington, DC: Inter-American Development Bank Research Department.
+Cruz, Cesi, Philip Keefer, and Carlos Scartascini. 2021. Database of Political Institutions 2020. Washington, DC: Inter-American Development Bank Research Department. https://publications.iadb.org/en/database-political-institutions-2020-dpi2020
 
 
 ---
@@ -82,7 +83,7 @@ Cruz, Cesi, Philip Keefer, and Carlos Scartascini. 2021. Database of Political I
 
 The below chart provides insight into the most common demands from protesters from 1990 to 2020.
 
-<img src="https://github.com/sethschober/Capstone/blob/main/images/protest_demands.png" width="1000">
+<img src="https://github.com/sethschober/Predicting-Political-Revolutions/blob/main/images/protest_demands.png" width="1000">
 
 
 #### Understanding Protest Locations
@@ -90,7 +91,7 @@ The below chart provides insight into the most common demands from protesters fr
 Below is a geographical distribution of protests by region. Do note that the Protests data source explicity excludes some countries, so this figure should not be construed as an understanding of *all* protests. Instead, it is the distribution within this dataset. 
 
 
-<img src="https://github.com/sethschober/Capstone/blob/main/images/protests_by_region.png" width="1000">
+<img src="https://github.com/sethschober/Predicting-Political-Revolutions/blob/main/images/protests_by_region.png" width="1000">
 
 ---
 
@@ -120,7 +121,7 @@ The model has a strong performance on the holdout data:
 
 The confusion matrix below shows the performance on the holdout data (left) and the performance on the full dataset (right), including train, test and holdout data. In addition to overall performance, the similar performance on training, test and holdout indicates that the model has not been overfit.
 
-<img src="https://github.com/sethschober/Capstone/blob/main/images/confusion_matrices.png" width="1000">
+<img src="https://github.com/sethschober/Predicting-Political-Revolutions/blob/main/images/confusion_matrices.png" width="1200">
 
 
 
@@ -128,7 +129,7 @@ The confusion matrix below shows the performance on the holdout data (left) and 
 
 Although XG boost models are notoriously difficult to extract meaningful feature importance data from, the plot below does provide an indication per the SHAP summary plot. 
 
-<img src="https://github.com/sethschober/Capstone/blob/main/images/shap_summary_plot.png" width="1000">
+<img src="https://github.com/sethschober/Predicting-Political-Revolutions/blob/main/images/shap_summary_plot.png" width="1000">
 
 
 Here, we see that the four most significant features are:
