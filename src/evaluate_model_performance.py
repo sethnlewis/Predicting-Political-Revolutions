@@ -1,8 +1,8 @@
 # Import functionally necessary packages
 import pandas as pd
 import matplotlib.pyplot as plt
-from sklearn.metrics import f1_score, precision_score, accuracy_score, recall_score
-from sklearn.metrics import plot_confusion_matrix
+from sklearn.metrics import f1_score, precision_score, accuracy_score
+from sklearn.metrics import plot_confusion_matrix, recall_score
 
 
 
@@ -45,7 +45,7 @@ def evaluate_model_performance(grid, x_test, y_test, title=None):
 
 def print_scores(prediction, actual):
     '''
-    Simply prints four measures of model performance: F1, accuracy, precision, and recall
+    Prints 4 measures of model performance: F1, accuracy, precision, and recall
     
     Parameters:
     -----------

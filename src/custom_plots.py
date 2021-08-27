@@ -10,12 +10,14 @@ from imblearn.over_sampling import SMOTE
 
 def custom_plot_matrix(df, max_corr=None):
     '''
-    Creates an aesthetic heatmap with pre-defined coloring, adaptive sizing, and adjustable correlation range/scale
+    Creates an aesthetic heatmap with pre-defined coloring, adaptive sizing, 
+    and adjustable correlation range/scale
     
     Parameters:
     -----------
     df : DataFrame to be plotted
-    max_corr : (optional) [0, 1] float for the maximum correlation to show on the legend, which affects coloring
+    max_corr : (optional) [0, 1] float for the maximum correlation to show 
+                on the legend, which affects coloring
 
     Returns:
     --------
@@ -38,8 +40,9 @@ def custom_plot_matrix(df, max_corr=None):
     # Draw the heatmap with the mask and scaled reasonably
     SIZE = 1.8
     plt.figure(figsize=(SIZE*corr.shape[1]/2, SIZE*corr.shape[1]/3))
-    sns.heatmap(corr, mask=mask, cmap=cmap, center=0, vmax=max_corr, vmin=-max_corr, 
-                square=True, linewidths=1, cbar_kws={"shrink": .4})
+    sns.heatmap(corr, mask=mask, cmap=cmap, center=0, vmax=max_corr, 
+                vmin=-max_corr, square=True, linewidths=1, 
+                cbar_kws={"shrink": .4})
     plt.show()
 
 
@@ -49,9 +52,10 @@ def custom_plot_matrix(df, max_corr=None):
 def get_shap_df(df_train, target_train, df_test):
     '''
     ADAPTED FROM CODE FOUND HERE: 
-    https://towardsdatascience.com/explain-any-models-with-the-shap-values-use-the-kernelexplainer-79de9464897a
+    towardsdatascience.com/explain-any-models-with-the-shap-values-use-the-kernelexplainer-79de9464897a
     
-    Used to manually perform scaling, transforming, and resampling that are typically done in a pipeline due to unique input needs of a SHAP plot
+    Used to manually perform scaling, transforming, and resampling that are 
+    typically done in a pipeline due to unique input needs of a SHAP plot
     
     Parameters:
     -----------
@@ -99,8 +103,10 @@ def get_shap_df(df_train, target_train, df_test):
     df_test_expanded_scaled = ss.transform(df_test_expanded)    
     
     # CONVERT FROM ARRAY TO DF
-    df_train_expanded_scaled = pd.DataFrame(df_train_expanded_scaled, columns=df_train_expanded.columns)
-    df_test_expanded_scaled = pd.DataFrame(df_test_expanded_scaled, columns=df_test_expanded.columns)
+    df_train_expanded_scaled = pd.DataFrame(df_train_expanded_scaled, 
+                                            columns=df_train_expanded.columns)
+    df_test_expanded_scaled = pd.DataFrame(df_test_expanded_scaled, 
+                                           columns=df_test_expanded.columns)
     
     # APPLY RESAMPLING
     sm = SMOTE()
@@ -111,7 +117,7 @@ def get_shap_df(df_train, target_train, df_test):
 
 
 
-def produce_shap_plot(df_train, target_train, df_test, target_test, model_shap, title=None):
+def produce_shap_plot(df_train, target_train, df_test, target_test, model_shap, title=None, savepath=None):
     '''
     Conveniently creates SHAP summary plot with predefined characteristics
     
@@ -151,5 +157,8 @@ def produce_shap_plot(df_train, target_train, df_test, target_test, model_shap, 
     # Add figure title if provided by user
     if title:
         plt.title(title)
+        
+    if savepath:
+        plt.savefig(savepath)
     
     plt.show();
