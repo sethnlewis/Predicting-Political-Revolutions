@@ -44,7 +44,7 @@ The analysis combines three core datasets from widely different sources to provi
 
 The first dataset, used as the center of the analysis, is incredibly valuable. It is described in the source documentation as "an effort to understand citizen movements against governments, what citizens want when they demonstrate against governments, and how governments respond to citizens. The MM data cover 162 countries between 1990 and 2018. These data contain events where 50 or more protesters publicly demonstrate against government, resulting in more than 10,000 protest events. Each event records location, protest size, protester demands, and government responses." [(1)](https://massmobilization.github.io/about.html) The project is sponsored by the Political Instability Task Force (PITF). The PITF is funded by the Central Intelligence Agency (CIA). [(1)](https://massmobilization.github.io/about.html) Throughout the  analysis, this dataset is referred to as the "Protests" dataset.
 
-Although the data source does specify that the dataset is not entirely comprehensive of all country across this entire time period. That said, it does contain over 17,000 recorded protests, each composed of 31 features. The data span 167 countries from 1990 to 2020. Seemingly the only large country to be ommitted is the United States, which is undoubtedly tied back to the source of the project funding.
+Although the data source does specify that the dataset is not entirely comprehensive of all country across this entire time period. That said, it does contain over 17,000 recorded protests, each composed of 31 features. The data span 167 countries from 1990 to 2020. Seemingly the only large country to be ommitted is the United States, which is certainly not a coincidence and can undoubtedly be tied back to the source of the project funding.
 
 
 #### Citation:
@@ -82,7 +82,7 @@ Cruz, Cesi, Philip Keefer, and Carlos Scartascini. 2021. Database of Political I
 
 The below chart provides insight into the most common demands from protesters from 1990 to 2020.
 
-<img src="https://github.com/sethschober/Capstone/blob/main/images/protest_demands.png" width="500">
+<img src="https://github.com/sethschober/Capstone/blob/main/images/protest_demands.png" width="1000">
 
 
 #### Understanding Protest Locations
@@ -90,7 +90,7 @@ The below chart provides insight into the most common demands from protesters fr
 Below is a geographical distribution of protests by region. Do note that the Protests data source explicity excludes some countries, so this figure should not be construed as an understanding of *all* protests. Instead, it is the distribution within this dataset. 
 
 
-<img src="https://github.com/sethschober/Capstone/blob/main/images/protests_by_region.png" width="500">
+<img src="https://github.com/sethschober/Capstone/blob/main/images/protests_by_region.png" width="1000">
 
 ---
 
@@ -120,7 +120,7 @@ The model has a strong performance on the holdout data:
 
 The confusion matrix below shows the performance on the holdout data (left) and the performance on the full dataset (right), including train, test and holdout data. In addition to overall performance, the similar performance on training, test and holdout indicates that the model has not been overfit.
 
-<img src="https://github.com/sethschober/Capstone/blob/main/images/confusion_matrices.png" width="500">
+<img src="https://github.com/sethschober/Capstone/blob/main/images/confusion_matrices.png" width="1000">
 
 
 
@@ -128,7 +128,7 @@ The confusion matrix below shows the performance on the holdout data (left) and 
 
 Although XG boost models are notoriously difficult to extract meaningful feature importance data from, the plot below does provide an indication per the SHAP summary plot. 
 
-<img src="https://github.com/sethschober/Capstone/blob/main/images/shap_summary_plot.png" width="500">
+<img src="https://github.com/sethschober/Capstone/blob/main/images/shap_summary_plot.png" width="1000">
 
 
 Here, we see that the four most significant features are:
