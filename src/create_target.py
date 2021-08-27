@@ -34,12 +34,11 @@ def create_target(protests, regimes):
     working_df['next_regime_chg_date'] = None
     working_df['days_until_next_regime_chg'] = None
 
-
     # Move "index" into its own column to be used in loop
-    protests = protests.reset_index(inplace=True, drop=False)
+    protests.reset_index(inplace=True, drop=False)
     
     # Eliminate unnecessary features
-    protests = [['index', 'scode', 'startdate']].values
+    protests = protests[['index', 'scode', 'startdate']].values
     
     # Loop over all country names
     for protest_index, protest_scode, protest_start in protests:
@@ -88,6 +87,6 @@ def create_target(protests, regimes):
     working_df['days_until_next_regime_chg'] = (working_df['next_regime_chg_date'] - working_df['startdate']).dt.days
     
     # Eliminate "helper" features that are no longer used
-    working_df.drop(['scode', 'startdate', 'next_regime_chg_date'], axis=1, inplace=True)
+    working_df.drop(['scode', 'startdate'], axis=1, inplace=True)
     
     return working_df

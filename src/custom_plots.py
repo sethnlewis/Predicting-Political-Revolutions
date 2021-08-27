@@ -66,15 +66,15 @@ def get_shap_df(df_train, target_train, df_test):
     df_test_expanded_scaled : DataFrame transformed from df_test
     '''
     
-#     # Reset indices
-#     df_train.reset_index(inplace=True, drop=True)
-#     df_test.reset_index(inplace=True, drop=True)
-    
+    # Reset indices
+    df_train.reset_index(inplace=True, drop=True)
+    df_test.reset_index(inplace=True, drop=True)  
+
     # CATEGORICALS
     df_train_cat = df_train.select_dtypes('object')
     df_test_cat = df_test.select_dtypes('object')
     
-    # One hot encode
+    # One hot encode df_train_expanded_scaled
     ohe = OneHotEncoder(sparse=False, handle_unknown='ignore')
     ohe.fit(df_train_cat)
     df_train_cat_ohe = ohe.transform(df_train_cat)
@@ -84,6 +84,7 @@ def get_shap_df(df_train, target_train, df_test):
     # NUMERIC
     df_train_num = df_train.select_dtypes('number')
     df_test_num = df_test.select_dtypes('number')
+    
     
     # COMBINE CATEGORICAL AND NUMERIC
     df_train_expanded = pd.DataFrame(df_train_cat_ohe, columns=names_ohe)
@@ -101,7 +102,7 @@ def get_shap_df(df_train, target_train, df_test):
     df_train_expanded_scaled = pd.DataFrame(df_train_expanded_scaled, columns=df_train_expanded.columns)
     df_test_expanded_scaled = pd.DataFrame(df_test_expanded_scaled, columns=df_test_expanded.columns)
     
-    # Apply resampling
+    # APPLY RESAMPLING
     sm = SMOTE()
     x_train_final, y_train_final = sm.fit_resample(df_train_expanded_scaled, target_train)    
     
@@ -116,12 +117,12 @@ def produce_shap_plot(df_train, target_train, df_test, target_test, model_shap, 
     
     Parameters:
     -----------
-    df_train : 
-    target_train : 
-    df_test : 
-    target_test : 
-    model_shap : 
-    title : 
+    df_train : DataFrame containing Training data
+    target_train : Series containing Training Target
+    df_test : DataFrame containing Testing data
+    target_test : Series containing Testing Target
+    model_shap : Pipeline containing model for SHAP plot
+    title : (optional) title for plot
 
     Returns:
     --------
