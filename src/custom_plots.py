@@ -10,12 +10,12 @@ from imblearn.over_sampling import SMOTE
 
 def custom_plot_matrix(df, max_corr=None):
     '''
-    
+    Creates an aesthetic heatmap with pre-defined coloring, adaptive sizing, and adjustable correlation range/scale
     
     Parameters:
     -----------
-    df : 
-    max_corr : 
+    df : DataFrame to be plotted
+    max_corr : (optional) [0, 1] float for the maximum correlation to show on the legend, which affects coloring
 
     Returns:
     --------
@@ -45,25 +45,26 @@ def custom_plot_matrix(df, max_corr=None):
 
 
 
-# ADAPTED FROM CODE FOUND HERE: https://towardsdatascience.com/explain-any-models-with-the-shap-values-use-the-kernelexplainer-79de9464897a
+
 def get_shap_df(df_train, target_train, df_test):
     '''
+    ADAPTED FROM CODE FOUND HERE: 
+    https://towardsdatascience.com/explain-any-models-with-the-shap-values-use-the-kernelexplainer-79de9464897a
     
+    Used to manually perform scaling, transforming, and resampling that are typically done in a pipeline due to unique input needs of a SHAP plot
     
     Parameters:
     -----------
-    df_train : 
-    target_train : 
-    df_test : 
+    df_train : DataFrame containing training data
+    target_train : Series containing target for training data
+    df_test : DataFrame containing test data
 
     Returns:
     --------
-    x_train_final : 
-    y_train_final : 
-    df_test_expanded_scaled : 
+    x_train_final : DateFrame transformed from df_train
+    y_train_final : DataFrame transformed from target_train
+    df_test_expanded_scaled : DataFrame transformed from df_test
     '''
-    
-    
     
 #     # Reset indices
 #     df_train.reset_index(inplace=True, drop=True)
@@ -111,7 +112,7 @@ def get_shap_df(df_train, target_train, df_test):
 
 def produce_shap_plot(df_train, target_train, df_test, target_test, model_shap, title=None):
     '''
-    
+    Conveniently creates SHAP summary plot with predefined characteristics
     
     Parameters:
     -----------

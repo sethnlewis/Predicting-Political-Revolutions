@@ -4,29 +4,28 @@ import pandas as pd
 
 def create_target(protests, regimes):
     '''
-    
+    Objective : create a "target" feature for the primary analysis that successfully corresponds to the number of days until a regime transition occurs
+    Methodology:
+    -----------
+    1. Create column for "next regime change date" in selected country for each protest
+    2. Using (1), create column for "days until next regime change"
+    3. Typecasting and removal of unnecessary "helper" features
     
     Parameters:
     -----------
-    protests : 
-    regimes : 
+    protests : DataFrame of cleaned dataset of political protests, originally derived from Mass Mobilizations dataset
+    regimes : DataFrame of cleaned dataset of political regimes across time, as provided by Polity Project dataset
 
     Returns:
     --------
-    working_df : 
+    working_df : DataFrame combining the data from "protests" and "regimes" and adding the feature for the number of "days until next regime change"
     '''
-    
-    
-    
-    #1. Create column for "next regime change date"
-#2. Create column for "days until next regime change"
-#3. Create target column for [above column] < 365 (try for other targets too)
-    
-    
     
     
     # Create new dataframe to contain results throughout loop
     working_df = protests[['scode', 'startdate']].copy()
+    
+    # Add empty columns that will iteratively be updated in loop
     working_df['parcomp'] = None
     working_df['parreg'] = None
     working_df['xconst'] = None
@@ -36,17 +35,22 @@ def create_target(protests, regimes):
     working_df['days_until_next_regime_chg'] = None
 
 
+    # Move "index" into its own column to be used in loop
+    protests = protests.reset_index(inplace=True, drop=False)
+    
+    # Eliminate unnecessary features
+    protests = [['index', 'scode', 'startdate']].values
+    
     # Loop over all country names
-    for protest_index, protest_scode, protest_start in protests.reset_index()[['index', 'scode', 'startdate']].values:
+    for protest_index, protest_scode, protest_start in protests:
 
-        # look only at country in question
+        # Narrow to only the country in question
         regime_country_df = regimes.loc[regimes.scode==protest_scode]
-
 
         # Loop over all regime indices
         for regime_index in regime_country_df.index:
 
-            # isolate startdate and enddate for selected regime
+            # isolate each metric for the selected regime and country
             regime_start = regime_country_df.loc[regime_index, 'startdate']
             regime_end   = regime_country_df.loc[regime_index, 'enddate']
             parcomp = regime_country_df.loc[regime_index, 'parcomp']
@@ -67,7 +71,7 @@ def create_target(protests, regimes):
                 working_df.loc[protest_index, 'xrcomp'] = xrcomp
 
 
-            # if the protest is within selected regime row
+            # if the protest is within selected regime row. Most common.
             elif (protest_start >= regime_start) and (protest_start <= regime_end):
                 working_df.loc[protest_index, 'next_regime_chg_date'] = regime_end
                 working_df.loc[protest_index, 'parcomp'] = parcomp
@@ -77,13 +81,13 @@ def create_target(protests, regimes):
                 working_df.loc[protest_index, 'xrcomp'] = xrcomp
 
 
-    # # Convert from 'object' to 'datetime' format
+    # Convert from 'object' to 'datetime' format
     working_df['next_regime_chg_date'] = pd.to_datetime(working_df['next_regime_chg_date'])
-
 
     # # Incorporate new column for "duration"
     working_df['days_until_next_regime_chg'] = (working_df['next_regime_chg_date'] - working_df['startdate']).dt.days
     
+    # Eliminate "helper" features that are no longer used
     working_df.drop(['scode', 'startdate', 'next_regime_chg_date'], axis=1, inplace=True)
     
     return working_df

@@ -8,18 +8,18 @@ from sklearn.metrics import plot_confusion_matrix
 
 def evaluate_model_performance(grid, x_test, y_test, title=None):
     '''
-    
+    Produces a confusion matrix and performance metrics for input model
     
     Parameters:
     -----------
-    grid : 
-    x_test : 
-    y_test : 
-    title : 
+    grid : fitted GridSearch instance
+    x_test : DataFrame containing test features
+    y_test : Series containing test target
+    title : (optional) title for figure
 
     Returns:
     --------
-    grid.best_estimator_ : 
+    grid.best_estimator_ : top-performing model extracted from grid search
     '''
         
     # Calculate predictions
@@ -45,12 +45,12 @@ def evaluate_model_performance(grid, x_test, y_test, title=None):
 
 def print_scores(prediction, actual):
     '''
-    
+    Simply prints four measures of model performance: F1, accuracy, precision, and recall
     
     Parameters:
     -----------
-    prediction : 
-    actual : 
+    prediction : predicted outcome of model
+    actual : actual outcome
     
     Returns:
     --------
