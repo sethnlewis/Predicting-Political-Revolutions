@@ -1,0 +1,5 @@
+# Notebooks
+
+This directory contains all Jupyter notebooks used throughout the analysis. 
+
+The analysis is conducted in five different notebooks. The first three cleaning notebooks - [cleaning_protests_dataset.ipynb](cleaning_protests_dataset.ipynb), [cleaning_regime_changes_dataset.ipynb](cleaning_regime_changes_dataset.ipynb), and [cleaning_governments_dataset.ipynb](cleaning_governments_dataset.ipynb) - clean one dataset of raw data alongside conducting feature engineering and selection. Each of these notebooks exports the final version of that dataset in a form ready to be combined with all others. Next, the [MODEL.ipynb](MODEL.ipynb) notebook combines these three SQL databases while also conducting substantial feature selection and engineering before beginning the main purpose of the notebook: modeling. The fourth notebook, [EDA.ipynb](EDA.ipynb), is used for exploratory analysis of features. The final notebook, [FINAL_SUMMARY_NOTEBOOK.ipynb](FINAL_SUMMARY_NOTEBOOK.ipynb) is a high-level summary of each of the other four notebooks, extracting key points from each.
