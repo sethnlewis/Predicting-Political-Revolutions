@@ -1,5 +1,5 @@
 # Predicting Political Revolutions
-Political upheavals have been ever present throughout humanity. Political leaders shape the context for everything we know. For that reason, we as a society need to generate a concrete understanding of when a revolution or political change is imminent. This analysis seeks to forecast whether a given protest will lead to a revolution within 90 days. 
+Political upheavals have been ever present throughout humanity. Political leaders shape the context for everything we know. For that reason, we as a society need to generate a concrete understanding of when a revolution or political change is imminent. This analysis seeks to forecast whether a given protest will lead to a revolution within one year. 
 
 The stakeholders for this analysis are wide reaching, but it is most relevant to political organizers and leadership. They can use this approach to best understand where efforts are best focused and most likely to lead to an impact. 
 
@@ -9,8 +9,8 @@ The stakeholders for this analysis are wide reaching, but it is most relevant to
 
 │                        
 ├── data
-│   ├── processed                                <-- SQL files containing processed data
-│   └── raw                                      <-- Original (immutable) data dump
+│   ├── processed   <-- SQL files containing processed data
+│   └── raw         <-- Original data
 │       ├── Mass-Mobilization-Protests           <-- Data source #1 
 │       ├── Polity-Project                       <-- Data source #2
 │       └── Database-of-Political-Institutions   <-- Data source #3
@@ -114,10 +114,10 @@ The XG boost model was found to perform the best all around. This decision was b
 
 ### Evaluate performance on holdout validation data
 The model has a strong performance on the holdout data:
-- F1 score: XX
-- Accuracy: XX
-- Precision: XX
-- Recall: XX
+- F1 score: 0.76
+- Accuracy: 0.95
+- Precision: 0.87
+- Recall: 0.72
 
 The confusion matrix below shows the performance on the holdout data (left) and the performance on the full dataset (right), including train, test and holdout data. In addition to overall performance, the similar performance on training, test and holdout indicates that the model has not been overfit.
 
@@ -133,10 +133,10 @@ Although XG boost models are notoriously difficult to extract meaningful feature
 
 
 Here, we see that the four most significant features are:
-1. XX
-2. XX
-3. XX
-4. XX
+1. **xconst** (executive constraints)
+2. **parcomp** (competitiveness of political participation)
+3. **totalseats** (number of members in legislative body)
+4. **startdate** (start date of the protest)
 
 ---
 
