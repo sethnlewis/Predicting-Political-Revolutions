@@ -114,10 +114,10 @@ The XG boost model was found to perform the best all around. This decision was b
 
 ### Evaluate performance on holdout validation data
 The model has a strong performance on the holdout data:
-- F1 score: 0.76
-- Accuracy: 0.95
-- Precision: 0.87
-- Recall: 0.72
+- F1 score: 0.81
+- Accuracy: 0.96
+- Precision: 0.90
+- Recall: 0.74
 
 The confusion matrix below shows the performance on the holdout data (left) and the performance on the full dataset (right), including train, test and holdout data. In addition to overall performance, the similar performance on training, test and holdout indicates that the model has not been overfit.
 
