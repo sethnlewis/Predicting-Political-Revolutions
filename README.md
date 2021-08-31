@@ -1,3 +1,5 @@
+<img src="https://github.com/sethschober/Predicting-Political-Revolutions/blob/main/images/banner.jpg" width="1200">
+
 # Predicting Political Revolutions
 Political upheavals have been ever present throughout humanity. Political leaders shape the context for everything we know. For that reason, we as a society need to generate a concrete understanding of when a revolution or political change is imminent. This analysis seeks to forecast whether a given protest will lead to a revolution within one year. 
 
@@ -145,3 +147,7 @@ Here, we see that the four most significant features are:
 Overall, this analysis successfully completes its objective. It creates and tunes a model that helps predict whether a given protest will lead to a regime transition within one year. This incredibly valuable tool can be used by stakeholders far and wide as an indicator of disruption to come, which in turn can be used for proactive or preventative measures by either side. With a very strong performing model, it can be trusted to give an accurate estimate of changes to come. 
 
 Going forward, this project allows for easy growth as more data is released. Each of the three primary datasets receive regular updates, and this new information can easily be incorporated in order to expand the temporal scope of the project and with more data comes to potential for stronger performance. 
+
+
+
+<img src="https://github.com/sethschober/Predicting-Political-Revolutions/blob/main/images/footer.png" width="1200">
