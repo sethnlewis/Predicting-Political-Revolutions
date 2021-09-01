@@ -38,7 +38,7 @@ def custom_plot_matrix(df, max_corr=None):
         max_corr = corr.replace(1.0, 0).abs().max().max()
 
     # Draw the heatmap with the mask and scaled reasonably
-    SIZE = 1.8
+    SIZE = 2
     plt.figure(figsize=(SIZE*corr.shape[1]/2, SIZE*corr.shape[1]/3))
     sns.heatmap(corr, mask=mask, cmap=cmap, center=0, vmax=max_corr, 
                 vmin=-max_corr, square=True, linewidths=1, 

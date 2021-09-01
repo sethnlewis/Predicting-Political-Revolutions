@@ -2,7 +2,7 @@ import pandas as pd
 from custom_plots import *
 
 
-def calculate_collinearity(df, min_threshold=0.5, return_result=False):
+def calculate_collinearity(df, min_threshold=0.5, return_result=False, plot=True):
     '''
     SOURCE: FLATIRON 19.6 "Multicollinearity of Features - Lab"
     https://github.com/learn-co-curriculum/dsc-multicollinearity-of-features-lab/tree/master
@@ -33,7 +33,8 @@ def calculate_collinearity(df, min_threshold=0.5, return_result=False):
     # for the sake of exercise, kept it in.
     df_corr.drop_duplicates(inplace=True)
 
-    custom_plot_matrix(df, max_corr=1)
+    if plot:
+        custom_plot_matrix(df, max_corr=1)
 
     print(f'Features with correlation higher than {min_threshold}:')
     display (df_corr[df_corr.cc>min_threshold])
