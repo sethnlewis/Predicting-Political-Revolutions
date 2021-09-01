@@ -61,7 +61,6 @@ def create_target(protests, regimes):
             parcomp = regime_country_df.loc[regime_index, 'parcomp']
             parreg = regime_country_df.loc[regime_index, 'parreg']
             xconst = regime_country_df.loc[regime_index, 'xconst']
-            xropen = regime_country_df.loc[regime_index, 'xropen']
             xrcomp = regime_country_df.loc[regime_index, 'xrcomp']
 
 
@@ -74,7 +73,6 @@ def create_target(protests, regimes):
                 working_df.loc[protest_index, 'parcomp'] = parcomp
                 working_df.loc[protest_index, 'parreg'] = parreg
                 working_df.loc[protest_index, 'xconst'] = xconst
-                working_df.loc[protest_index, 'xropen'] = xropen
                 working_df.loc[protest_index, 'xrcomp'] = xrcomp
 
 
@@ -85,7 +83,6 @@ def create_target(protests, regimes):
                 working_df.loc[protest_index, 'parcomp'] = parcomp
                 working_df.loc[protest_index, 'parreg'] = parreg
                 working_df.loc[protest_index, 'xconst'] = xconst
-                working_df.loc[protest_index, 'xropen'] = xropen
                 working_df.loc[protest_index, 'xrcomp'] = xrcomp
 
 
