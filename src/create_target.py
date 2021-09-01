@@ -32,11 +32,7 @@ def create_target(protests, regimes):
     working_df = protests[['scode', 'startdate']].copy()
     
     # Add empty columns that will iteratively be updated in loop
-    working_df['parcomp'] = None
-    working_df['parreg'] = None
     working_df['xconst'] = None
-    working_df['xropen'] = None
-    working_df['xrcomp'] = None
     working_df['next_regime_chg_date'] = None
     working_df['days_until_next_regime_chg'] = None
 
@@ -58,10 +54,7 @@ def create_target(protests, regimes):
             # isolate each metric for the selected regime and country
             regime_start = regime_country_df.loc[regime_index, 'startdate']
             regime_end   = regime_country_df.loc[regime_index, 'enddate']
-            parcomp = regime_country_df.loc[regime_index, 'parcomp']
-            parreg = regime_country_df.loc[regime_index, 'parreg']
             xconst = regime_country_df.loc[regime_index, 'xconst']
-            xrcomp = regime_country_df.loc[regime_index, 'xrcomp']
 
 
             # if protest occurs before statehood,set the 'regime end' to the 
@@ -70,20 +63,14 @@ def create_target(protests, regimes):
             if (regime_index == regime_country_df.index[0]) and \
                 (protest_start < regime_start):
                 working_df.loc[protest_index, 'next_regime_chg_date'] = regime_start
-                working_df.loc[protest_index, 'parcomp'] = parcomp
-                working_df.loc[protest_index, 'parreg'] = parreg
                 working_df.loc[protest_index, 'xconst'] = xconst
-                working_df.loc[protest_index, 'xrcomp'] = xrcomp
 
 
             # if the protest is within selected regime row. Most common.
             elif (protest_start >= regime_start) and \
                  (protest_start <= regime_end):
                 working_df.loc[protest_index, 'next_regime_chg_date'] = regime_end
-                working_df.loc[protest_index, 'parcomp'] = parcomp
-                working_df.loc[protest_index, 'parreg'] = parreg
                 working_df.loc[protest_index, 'xconst'] = xconst
-                working_df.loc[protest_index, 'xrcomp'] = xrcomp
 
 
     # Convert from 'object' to 'datetime' format
