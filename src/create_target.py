@@ -33,6 +33,7 @@ def create_target(protests, regimes):
     
     # Add empty columns that will iteratively be updated in loop
     working_df['xconst'] = None
+    working_df['current_regime'] = None #TESTING
     working_df['next_regime_chg_date'] = None
     working_df['days_until_next_regime_chg'] = None
 
@@ -55,6 +56,7 @@ def create_target(protests, regimes):
             regime_start = regime_country_df.loc[regime_index, 'startdate']
             regime_end   = regime_country_df.loc[regime_index, 'enddate']
             xconst = regime_country_df.loc[regime_index, 'xconst']
+            current_regime = regime_country_df.loc[regime_index, 'current_regime']# TESTING
 
 
             # if protest occurs before statehood,set the 'regime end' to the 
@@ -64,6 +66,7 @@ def create_target(protests, regimes):
                 (protest_start < regime_start):
                 working_df.loc[protest_index, 'next_regime_chg_date'] = regime_start
                 working_df.loc[protest_index, 'xconst'] = xconst
+                working_df.loc[protest_index, 'current_regime'] = current_regime# TESTING
 
 
             # if the protest is within selected regime row. Most common.
@@ -71,6 +74,7 @@ def create_target(protests, regimes):
                  (protest_start <= regime_end):
                 working_df.loc[protest_index, 'next_regime_chg_date'] = regime_end
                 working_df.loc[protest_index, 'xconst'] = xconst
+                working_df.loc[protest_index, 'current_regime'] = current_regime # TESTING
 
 
     # Convert from 'object' to 'datetime' format
