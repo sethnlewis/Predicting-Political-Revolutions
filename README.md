@@ -125,10 +125,10 @@ The XG boost model was found to perform the best all around. This decision was b
 
 ### Evaluate performance on test data
 The model has a strong performance on the test data:
-- F1 score: 0.78
+- F1 score: 0.80
 - Accuracy: 0.96
-- Precision: 0.84
-- Recall: 0.72
+- Precision: 0.86
+- Recall: 0.74
 
 The confusion matrix below shows the performance on the holdout data (left) and the performance on the full dataset (right), including train and test. In addition to overall performance, the performance discrepancy between the two plots show that overfitting is prevalent, though the performance on the test data remains sufficiently strong for a high performing model.
 
