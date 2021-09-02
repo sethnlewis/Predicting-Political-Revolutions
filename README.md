@@ -57,7 +57,7 @@ The analysis combines three core datasets from different sources to provide a di
 
 The first dataset is described in the source documentation as "an effort to understand citizen movements against governments, what citizens want when they demonstrate against governments, and how governments respond to citizens. The MM data cover 162 countries between 1990 and 2018. These data contain events where 50 or more protesters publicly demonstrate against government, resulting in more than 10,000 protest events. Each event records location, protest size, protester demands, and government responses." [(1)](https://massmobilization.github.io/about.html) The project is sponsored by the Political Instability Task Force (PITF). The PITF is funded by the Central Intelligence Agency (CIA). [(1)](https://massmobilization.github.io/about.html) Throughout the  analysis, this dataset is referred to as the "Protests" dataset.
 
-Although the data source does specify that the dataset is not entirely comprehensive of all country across this entire time period, it does contain over 17,000 recorded protests, each composed of 31 features. The data span 167 countries from 1990 to 2020. Seemingly the only large country to be ommitted is the United States, which is certainly not a coincidence and can undoubtedly be tied back to the source of the project funding.
+Although the data source does specify that the dataset is not entirely comprehensive of all country across this entire time period, it does contain over 17,000 recorded protests, each composed of 31 features. The data span 167 countries from 1990 to 2020. Seemingly the only large country to be omitted is the United States, which is certainly not a coincidence and can undoubtedly be tied back to the source of the project funding.
 
 
 #### Citation:
@@ -100,7 +100,7 @@ The below chart provides insight into the categorization of demands from protest
 
 #### Understanding Protest Locations
 
-Below is a geographical distribution of protests by region. Do note that the Protests data source explicity excludes some countries, so this figure should not be construed as an understanding of *all* protests globally. Instead, it is the distribution within this dataset. 
+Below is a geographical distribution of protests by region. Do note that the Protests data source explicitly excludes some countries, so this figure should not be construed as an understanding of *all* protests globally. Instead, it is the distribution within this dataset. 
 
 <img src="https://github.com/sethschober/Predicting-Political-Revolutions/blob/main/images/protests_by_region.png" width="1000">
 
@@ -114,7 +114,7 @@ The models explored include K-Nearest Neighbors (KNN), Bayesian classifiers, ADA
 - SMOTE was determined to be essential given the imbalanced nature of the dataset. Only 11% of the target feature values were 1, leaving the other 89% as 0. This is a prime example of the need for resampling, and SMOTE proved highly effective.
 - Hyperparameter grid searches are inherently valuable when optimizing a model. Appropriate hyperparameter searches were used for each model type.
 
-The output of each model is provided in terms of four core statistical measures (f1 score, accuracy, precision, and recall), in addition to displaying a confusion matrix for the test data. F1 was selected before the modeling process as the most relevant metric given that it encomasses all possible outcomes, as opposed to the other three metrics which leave out at least one possible outcome from their evaluation. 
+The performance of each model is evaluated on four core statistical measures (f1 score, accuracy, precision, and recall), in addition to displaying a confusion matrix for the test data. F1 was selected before the modeling process as the most relevant metric given that it encompasses all possible outcomes, as opposed to the other three metrics which leave out at least one possible outcome from their evaluation. 
 
 
 ---
@@ -124,11 +124,11 @@ The XG boost model was found to perform the best all around. This decision was b
 
 
 ### Evaluate performance on test data
-The model has a strong performance on the holdout test data:
-- F1 score: XXX
-- Accuracy: XXX
-- Precision: XXX
-- Recall: XXX
+The model has a strong performance on the test data:
+- F1 score: 0.78
+- Accuracy: 0.96
+- Precision: 0.84
+- Recall: 0.72
 
 The confusion matrix below shows the performance on the holdout data (left) and the performance on the full dataset (right), including train and test. In addition to overall performance, the performance discrepancy between the two plots show that overfitting is prevalent, though the performance on the test data remains sufficiently strong for a high performing model.
 
@@ -136,27 +136,42 @@ The confusion matrix below shows the performance on the holdout data (left) and 
 
 
 
-### Feature importance
+### Feature Importance
 
 Although XG boost models are notoriously difficult to extract meaningful feature importance data from, the plot below does provide an indication per the SHAP summary plot. 
 
 <img src="https://github.com/sethschober/Predicting-Political-Revolutions/blob/main/images/shap_summary_plot.png" width="1000">
 
 
-Here, we see that the four most significant features are:
-1. **XXX** (XXX)
-2. **XXX** (XXX)
-3. **XXX** (XXX)
-4. **XXX** (XXX)
+Here, we see that the five most significant features are:
+1. **xconst**: presence of executive constraints, ranging from "Unlimited Authority" through "Executive Parity"
+2. **protestnumber_log**: number of protests that already occurred in the year of the protest, log-transformed
+3. **tensys_strict**: length of time the country has been autocratic or democratic
+4. **totalseats**: total seats in the legislature
+5. **yrsoffc**: number of years the chief executive has been in office
+
+To bring some meaning to the SHAP summary plot, it is worth noting that:
+1. Countries with low  executive constraint ("Unlimited Authority") are more strongly correlated with a protest overturning the regime.
+2. Higher turnouts to protests are associated with regime transitions. However, the data is somewhat split: even very small protests can be associated with regime transition.
+3. There is a less distinct divide in the relationship between the length of time a country has been autocratic vs. democratic than in other metrics. That said, the feature remains a strong predictor.
+4. Regime transitions happen somewhat consistently across the size of governing bodies. 
+5. Protests in countries with new executive leadership are less likely to lead to regime change than countries with a long-ruling leader.
+
+
+
 
 ---
 
 
+
+
 ## Conclusion
-Overall, this analysis successfully completes its objective. It creates and tunes a model that helps predict whether a given protest will lead to a regime transition within one year. This incredibly valuable tool can be used by stakeholders far and wide as an indicator of disruption to come, which in turn can be used for proactive or preventative measures by either side. With a very strong performing model, it can be trusted to give an accurate estimate of changes to come. 
+Overall, this analysis successfully completes its objective. It creates and tunes a model that helps predict whether a given protest will lead to a regime transition within one year. This incredibly valuable tool can be used by political scientists to better understand regime transitions, including my investigating the model further than was conducted in this analysis. In addition, the model and its findings can be used for proactive or preventative measures by either side of government. With a very strong performing model, it can be trusted to give an accurate estimate of changes to come. 
 
 Going forward, this project allows for easy growth as more data is released. Each of the three primary datasets receive regular updates, and this new information can easily be incorporated in order to expand the temporal scope of the project and with more data comes to potential for stronger performance. 
 
+### Next Steps
+A powerful next step could be to investigate this data using time series analyses. Specifically, it would be valuable to understand how protest outcomes are affected by protests before it.
 
 
 <img src="https://github.com/sethschober/Predicting-Political-Revolutions/blob/main/images/footer.png" width="1200">
