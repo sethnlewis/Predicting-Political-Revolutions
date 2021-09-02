@@ -114,14 +114,14 @@ The output of each model is provided in terms of four core statistical measures 
 The XG boost model was found to perform the best all around. This decision was based on the F1 score, but the XG boost also outperformed other models on other metrics.
 
 
-### Evaluate performance on holdout validation data
-The model has a strong performance on the holdout data:
-- F1 score: 0.81
-- Accuracy: 0.96
-- Precision: 0.90
-- Recall: 0.74
+### Evaluate performance on test data
+The model has a strong performance on the holdout test data:
+- F1 score: XXX
+- Accuracy: XXX
+- Precision: XXX
+- Recall: XXX
 
-The confusion matrix below shows the performance on the holdout data (left) and the performance on the full dataset (right), including train, test and holdout data. In addition to overall performance, the similar performance on training, test and holdout indicates that the model has not been overfit.
+The confusion matrix below shows the performance on the holdout data (left) and the performance on the full dataset (right), including train and test. In addition to overall performance, the performance discrepancy between the two plots show that overfitting is prevalent, though the performance on the test data remains sufficiently strong for a high performing model.
 
 <img src="https://github.com/sethschober/Predicting-Political-Revolutions/blob/main/images/confusion_matrices.png" width="1200">
 
@@ -135,10 +135,10 @@ Although XG boost models are notoriously difficult to extract meaningful feature
 
 
 Here, we see that the four most significant features are:
-1. **xconst** (executive constraints)
-2. **parcomp** (competitiveness of political participation)
-3. **totalseats** (number of members in legislative body)
-4. **startdate** (start date of the protest)
+1. **XXX** (XXX)
+2. **XXX** (XXX)
+3. **XXX** (XXX)
+4. **XXX** (XXX)
 
 ---
 
