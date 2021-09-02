@@ -74,9 +74,11 @@ def get_shap_df(df_train, target_train, df_test):
     df_train.reset_index(inplace=True, drop=True)
     df_test.reset_index(inplace=True, drop=True)  
 
+    
     # CATEGORICALS
-    df_train_cat = df_train.select_dtypes('object')
-    df_test_cat = df_test.select_dtypes('object')
+    df_train_cat = df_train.select_dtypes(exclude='number')
+    df_test_cat = df_test.select_dtypes(exclude='number')
+    
     
     # One hot encode df_train_expanded_scaled
     ohe = OneHotEncoder(sparse=False, handle_unknown='ignore')
@@ -84,6 +86,9 @@ def get_shap_df(df_train, target_train, df_test):
     df_train_cat_ohe = ohe.transform(df_train_cat)
     df_test_cat_ohe = ohe.transform(df_test_cat)
     names_ohe = ohe.get_feature_names(df_train_cat[df_train_cat.columns].columns)
+    
+    
+    
     
     # NUMERIC
     df_train_num = df_train.select_dtypes('number')
@@ -95,6 +100,9 @@ def get_shap_df(df_train, target_train, df_test):
     df_test_expanded = pd.DataFrame(df_test_cat_ohe, columns=names_ohe)
     df_train_expanded[df_train_num.columns] = df_train_num
     df_test_expanded[df_test_num.columns] = df_test_num
+    
+    
+    
     
     # SCALE DATA
     ss = StandardScaler()
@@ -111,6 +119,8 @@ def get_shap_df(df_train, target_train, df_test):
     # APPLY RESAMPLING
     sm = SMOTE()
     x_train_final, y_train_final = sm.fit_resample(df_train_expanded_scaled, target_train)    
+    
+    
     
     # Return encoded, scaled, resampled versions of inputs
     return x_train_final, y_train_final, df_test_expanded_scaled
@@ -142,6 +152,7 @@ def produce_shap_plot(df_train, target_train, df_test, target_test, model_shap, 
     # Extract "model" portion of pipeline
     model_shap = model_shap.steps[2][1]
     
+    # NOTE
     # Fit to training data
     model_shap.fit(df_train, target_train)
     pred = model_shap.predict(df_test)
