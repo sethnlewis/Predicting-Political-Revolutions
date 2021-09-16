@@ -44,7 +44,7 @@ The fourth notebook - [MODEL.ipynb](notebooks/MODEL.ipynb) - joins these three S
 
 The fifth analysis notebook, [EDA.ipynb](notebooks/EDA.ipynb), is used for exploratory analysis of features. 
 
-The final notebook, [FINAL_SUMMARY_NOTEBOOK.ipynb](notebooks/FINAL_SUMMARY_NOTEBOOK.ipynb) is a high-level summary of all other notebooks, extracting key points from each and discussing key findings.
+**The final notebook, [FINAL_SUMMARY_NOTEBOOK.ipynb](notebooks/FINAL_SUMMARY_NOTEBOOK.ipynb) is a high-level summary of all other notebooks, extracting key points from each and discussing key findings. It is recommended that you start here if you are looking to review and understand the project.**
 
 
 ---
