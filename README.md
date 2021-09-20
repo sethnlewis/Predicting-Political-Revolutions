@@ -1,4 +1,4 @@
-<img src="https://github.com/sethschober/Predicting-Political-Revolutions/blob/main/images/banner.jpg" width="1200">
+<img src="https://github.com/sethschober/Predicting-Political-Revolutions/blob/main/report/figures/banner.jpg" width="1200">
 
 # Predicting Political Revolutions
 Political upheavals have been ever present throughout humanity. Political leaders shape the context for everything we know. For that reason, we as a society need to generate a well-founded understanding of when a revolution or political change is imminent, as well as data-based indicators. This analysis seeks to forecast whether a given protest will lead to a revolution within one year using fundamental characteristics of the protest as well as metrics to understand the government in place at the time of protest. 
@@ -18,19 +18,20 @@ The stakeholders for this analysis are wide reaching, but it is most directly re
 │       ├── Mass-Mobilization-Protests           <-- Data source #1 
 │       ├── Polity-Project                       <-- Data source #2
 │       └── Database-of-Political-Institutions   <-- Data source #3
-│       
-├── images                   <-- Figures used in presentation and notebooks
 │
-├── notebooks                <-- Jupyter Notebooks for exploration and presentation
+├── models           <-- Models used in analysis
 │
-├── reference_material
-│   └── data user manuals    <-- PDFs provided from data sources
+├── notebooks        <-- Jupyter Notebooks for exploration and presentation
+│   └── cleaning     <-- Preliminary notebooks for cleaning and EDA
 │
-├── report                   <-- Generated analysis summary
+├── references       <-- Data user manuals
 │
-├── src                      <-- Custom functions used in notebooks
+├── report           <-- Non-technical presentation
+│   └── figures      <-- Figures used in presentation and notebooks
 │
-└── README.md                <-- Main README file
+├── src              <-- Custom functions used in notebooks
+│
+└── README.md        <-- Main README file
 
 ```
 
@@ -95,14 +96,14 @@ Below is a breakdown of two features that frame the context for the protests: wh
 
 The below chart provides insight into the categorization of demands from protesters over the time period of this analysis.
 
-<img src="https://github.com/sethschober/Predicting-Political-Revolutions/blob/main/images/protest_demands.png" width="1000">
+<img src="https://github.com/sethschober/Predicting-Political-Revolutions/blob/main/report/figures/protest_demands.png" width="1000">
 
 
 #### Understanding Protest Locations
 
 Below is a geographical distribution of protests by region. Do note that the Protests data source explicitly excludes some countries, so this figure should not be construed as an understanding of *all* protests globally. Instead, it is the distribution within this dataset. 
 
-<img src="https://github.com/sethschober/Predicting-Political-Revolutions/blob/main/images/protests_by_region.png" width="1000">
+<img src="https://github.com/sethschober/Predicting-Political-Revolutions/blob/main/report/figures/protests_by_region.png" width="1000">
 
 ---
 
@@ -132,7 +133,7 @@ The model has a strong performance on the test data:
 
 The confusion matrix below shows the performance on the holdout data (left) and the performance on the full dataset (right), including train and test. In addition to overall performance, the performance discrepancy between the two plots show that overfitting is prevalent, though the performance on the test data remains sufficiently strong for a high performing model.
 
-<img src="https://github.com/sethschober/Predicting-Political-Revolutions/blob/main/images/confusion_matrices.png" width="1200">
+<img src="https://github.com/sethschober/Predicting-Political-Revolutions/blob/main/report/figures/confusion_matrices.png" width="1200">
 
 
 
@@ -140,7 +141,7 @@ The confusion matrix below shows the performance on the holdout data (left) and 
 
 Although XG boost models are notoriously difficult to extract meaningful feature importance data from, the plot below does provide an indication per the SHAP summary plot. 
 
-<img src="https://github.com/sethschober/Predicting-Political-Revolutions/blob/main/images/shap_summary_plot.png" width="1000">
+<img src="https://github.com/sethschober/Predicting-Political-Revolutions/blob/main/report/figures/shap_summary_plot.png" width="1000">
 
 
 Here, we see that the five most significant features are:
@@ -174,4 +175,4 @@ Going forward, this project allows for easy growth as more data is released. Eac
 A powerful next step could be to investigate this data using time series analyses. Specifically, it would be valuable to understand how protest outcomes are affected by protests before it.
 
 
-<img src="https://github.com/sethschober/Predicting-Political-Revolutions/blob/main/images/footer.png" width="1200">
+<img src="https://github.com/sethschober/Predicting-Political-Revolutions/blob/main/report/figures/footer.png" width="1200">
