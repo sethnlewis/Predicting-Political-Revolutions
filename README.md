@@ -173,6 +173,3 @@ Going forward, this project allows for easy growth as more data is released. Eac
 
 ### Next Steps
 A powerful next step could be to investigate this data using time series analyses. Specifically, it would be valuable to understand how protest outcomes are affected by protests before it.
-
-
-<img src="https://github.com/sethschober/Predicting-Political-Revolutions/blob/main/report/figures/footer.png" width="1200">
