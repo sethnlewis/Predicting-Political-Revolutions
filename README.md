@@ -1,5 +1,3 @@
-<img src="https://github.com/sethschober/Predicting-Political-Revolutions/blob/main/report/figures/banner.jpg" width="1200">
-
 # Predicting Political Revolutions
 Political upheavals have been ever present throughout humanity. Political leaders shape the context for everything we know. For that reason, we as a society need to generate a well-founded understanding of when a revolution or political change is imminent, as well as data-based indicators. This analysis seeks to forecast whether a given protest will lead to a revolution within one year using fundamental characteristics of the protest as well as metrics to understand the government in place at the time of protest. 
 
