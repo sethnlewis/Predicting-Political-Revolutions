@@ -1,7 +1,9 @@
 from custom_plots import custom_plot_matrix
 
 
-def calculate_collinearity(df, min_threshold=0.5, return_result=False, plot=True):
+def calculate_collinearity(
+    df, min_threshold=0.5, return_result=False, plot=True
+):
     """
     save absolute value of correlation matrix as a data frame
     converts all values to absolute value

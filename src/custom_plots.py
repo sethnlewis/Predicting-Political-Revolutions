@@ -88,7 +88,9 @@ def get_shap_df(df_train, target_train, df_test):
     ohe.fit(df_train_cat)
     df_train_cat_ohe = ohe.transform(df_train_cat)
     df_test_cat_ohe = ohe.transform(df_test_cat)
-    names_ohe = ohe.get_feature_names(df_train_cat[df_train_cat.columns].columns)
+    names_ohe = ohe.get_feature_names(
+        df_train_cat[df_train_cat.columns].columns
+    )
 
     # NUMERIC
     df_train_num = df_train.select_dtypes("number")
@@ -145,7 +147,9 @@ def produce_shap_plot(
     """
 
     # Gather encoded, scaled, resampled dataframes
-    df_train, target_train, df_test = get_shap_df(df_train, target_train, df_test)
+    df_train, target_train, df_test = get_shap_df(
+        df_train, target_train, df_test
+    )
 
     # Extract "model" portion of pipeline
     model_shap = model_shap.steps[2][1]
