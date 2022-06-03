@@ -68,10 +68,11 @@ def create_target(protests, regimes):
                 working_df.loc[protest_index, "present"] = present
 
             # if the protest is within selected regime row. Most common.
-            elif (protest_start >= regime_start) and (protest_start <= regime_end):
-                working_df.loc[protest_index, "next_regime_chg_date"] = regime_end
-                working_df.loc[protest_index, "xconst"] = xconst
-                working_df.loc[protest_index, "present"] = present
+            elif protest_start >= regime_start:
+                if protest_start <= regime_end:
+                    working_df.loc[protest_index, "next_regime_chg_date"] = regime_end
+                    working_df.loc[protest_index, "xconst"] = xconst
+                    working_df.loc[protest_index, "present"] = present
 
     # Convert from 'object' to 'datetime' format
     chg_date = working_df["next_regime_chg_date"]
