@@ -1,0 +1,40 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.2.0
+  hooks:
+    - id: check-yaml
+    - id: end-of-file-fixer
+    - id: trailing-whitespace
+      exclude: setup.cfg
+- repo: https://github.com/psf/black
+  rev: 22.3.0
+  hooks:
+    - id: black-jupyter
+      args: [--line-length=88]
+- repo: https://github.com/pycqa/isort
+  rev: 5.10.1
+  hooks:
+    - id: isort
+      name: isort (python)
+      args: [--profile=black, --line-length=88]
+- repo: https://github.com/pre-commit/pygrep-hooks
+  rev: v1.9.0
+  hooks: # Enforce that python3.6+ type annotations are used instead of type comments
+  - id: python-use-type-annotations
+# - repo: https://github.com/PyCQA/flake8
+#   rev: 4.0.1
+#   hooks:
+#   - id: flake8
+#   args: []
+#- repo: https://github.com/PyCQA/pydocstyle
+#  rev: 6.1.1
+#  hooks:
+#    - id: pydocstyle
+# - repo: local
+  # hooks:
+  #   - id: pytest-check
+  #     name: pytest-check
+  #     entry: pytest
+  #     language: system
+  #     pass_filenames: false
+  #     always_run: true

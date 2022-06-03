@@ -1,7 +1,7 @@
 # Predicting Political Revolutions
-Political upheavals have been ever present throughout humanity. Political leaders shape the context for everything we know. For that reason, we as a society need to generate a well-founded understanding of when a revolution or political change is imminent, as well as data-based indicators. This analysis seeks to forecast whether a given protest will lead to a revolution within one year using fundamental characteristics of the protest as well as metrics to understand the government in place at the time of protest. 
+Political upheavals have been ever present throughout humanity. Political leaders shape the context for everything we know. For that reason, we as a society need to generate a well-founded understanding of when a revolution or political change is imminent, as well as data-based indicators. This analysis seeks to forecast whether a given protest will lead to a revolution within one year using fundamental characteristics of the protest as well as metrics to understand the government in place at the time of protest.
 
-The stakeholders for this analysis are wide reaching, but it is most directly relevant to political scientists. As a field focused on understanding the science of politics, including to inform decision making and strategy, a data science investigation into the topic of regime change remains highly relevant. Similarly, political organizers or government leadership could also gather insights with the potential to guide strategic decisions and determine where efforts are best focused and with the highest likelihood of creating an impact. 
+The stakeholders for this analysis are wide reaching, but it is most directly relevant to political scientists. As a field focused on understanding the science of politics, including to inform decision making and strategy, a data science investigation into the topic of regime change remains highly relevant. Similarly, political organizers or government leadership could also gather insights with the potential to guide strategic decisions and determine where efforts are best focused and with the highest likelihood of creating an impact.
 
 
 
@@ -9,11 +9,11 @@ The stakeholders for this analysis are wide reaching, but it is most directly re
 
 ```
 
-│                        
+│
 ├── data
 │   ├── processed   <-- SQL files containing processed data
 │   └── raw         <-- Original data
-│       ├── Mass-Mobilization-Protests           <-- Data source #1 
+│       ├── Mass-Mobilization-Protests           <-- Data source #1
 │       ├── Polity-Project                       <-- Data source #2
 │       └── Database-of-Political-Institutions   <-- Data source #3
 │
@@ -37,11 +37,11 @@ The main high-level Jupyter notebook for this project can be found [here](notebo
 
 
 ## Project Structure
-Given the complex nature of combining three separate datasets from distinct sources, the analysis is conducted in five different notebooks, and one additional notebook is used for summary. The first three focus on cleaning the data through data understanding, manipulation, feature selection, and feature engineering: [cleaning_protests_dataset.ipynb](notebooks/cleaning_protests_dataset.ipynb), [cleaning_regime_changes_dataset.ipynb](notebooks/cleaning_regime_changes_dataset.ipynb), and [cleaning_governments_dataset.ipynb](notebooks/cleaning_governments_dataset.ipynb). Each of these files exports the final resulting dataset into a SQL database, structured to cleanly join them all together. 
+Given the complex nature of combining three separate datasets from distinct sources, the analysis is conducted in five different notebooks, and one additional notebook is used for summary. The first three focus on cleaning the data through data understanding, manipulation, feature selection, and feature engineering: [cleaning_protests_dataset.ipynb](notebooks/cleaning_protests_dataset.ipynb), [cleaning_regime_changes_dataset.ipynb](notebooks/cleaning_regime_changes_dataset.ipynb), and [cleaning_governments_dataset.ipynb](notebooks/cleaning_governments_dataset.ipynb). Each of these files exports the final resulting dataset into a SQL database, structured to cleanly join them all together.
 
 The fourth notebook - [MODEL.ipynb](notebooks/MODEL.ipynb) - joins these three SQL files and performs feature engineering that could not be done without aggregating the data from multiple sources. This excludes engineering the target, alongside multiple input features. Beyond these steps, the notebook contains all modeling conducted in this analysis. Since it contains data from all sources, **this notebook is recommended as the place to go for the largest exposure to strategic decision making, understanding the ways in which the data are connected, and the testing of model variations.**
 
-The fifth analysis notebook, [EDA.ipynb](notebooks/EDA.ipynb), is used for exploratory analysis of features. 
+The fifth analysis notebook, [EDA.ipynb](notebooks/EDA.ipynb), is used for exploratory analysis of features.
 
 **The final notebook, [FINAL_SUMMARY_NOTEBOOK.ipynb](notebooks/FINAL_SUMMARY_NOTEBOOK.ipynb) is a high-level summary of all other notebooks, extracting key points from each and discussing key findings. It is recommended that you start here if you are looking to review and understand the project.**
 
@@ -69,9 +69,9 @@ Clark, David; Regan, Patrick, 2016, "Mass Mobilization Protest Data", https://do
 The second dataset codes "authority characteristics of states in the world system for purposes of comparative, quantitative analysis." [(2)](https://www.systemicpeace.org/polityproject.html) "The Polity5 dataset covers all major, independent states in the global system over the period [1800-2020] (i.e., states with a total population of 500,000 or more in the most recent year; currently 167 countries. The Polity conceptual scheme is unique in that it examines concomitant qualities of democratic and autocratic authority in governing institutions, rather than discreet and mutually exclusive forms of governance. This perspective envisions a spectrum of governing authority that spans from fully institutionalized autocracies through mixed, or incoherent, authority regimes (termed "anocracies") to fully institutionalized democracies." [(2)](https://www.systemicpeace.org/polityproject.html). Most relevant to this analysis, "it also records changes in the institutionalized qualities of governing authority."  [(2)](https://www.systemicpeace.org/polityproject.html). These changes in governing authority are the target feature of this analysis. The dataset contains 1,693 rows of data, each with 24 features. Throughout the analysis, this dataset is referred to as the "Regime Changes" or "Regimes" dataset.
 
 
-#### Citation: 
+#### Citation:
 
-“The Polity Project.” PolityProject, Center for Systemic Peace, www.systemicpeace.org/polityproject.html. 
+“The Polity Project.” PolityProject, Center for Systemic Peace, www.systemicpeace.org/polityproject.html.
 
 
 
@@ -99,7 +99,7 @@ The below chart provides insight into the categorization of demands from protest
 
 #### Understanding Protest Locations
 
-Below is a geographical distribution of protests by region. Do note that the Protests data source explicitly excludes some countries, so this figure should not be construed as an understanding of *all* protests globally. Instead, it is the distribution within this dataset. 
+Below is a geographical distribution of protests by region. Do note that the Protests data source explicitly excludes some countries, so this figure should not be construed as an understanding of *all* protests globally. Instead, it is the distribution within this dataset.
 
 <img src="https://github.com/sethschober/Predicting-Political-Revolutions/blob/main/report/figures/protests_by_region.png" width="1000">
 
@@ -113,7 +113,7 @@ The models explored include K-Nearest Neighbors (KNN), Bayesian classifiers, ADA
 - SMOTE was determined to be essential given the imbalanced nature of the dataset. Only 11% of the target feature values were 1, leaving the other 89% as 0. This is a prime example of the need for resampling, and SMOTE proved highly effective.
 - Hyperparameter grid searches are inherently valuable when optimizing a model. Appropriate hyperparameter searches were used for each model type.
 
-The performance of each model is evaluated on four core statistical measures (f1 score, accuracy, precision, and recall), in addition to displaying a confusion matrix for the test data. F1 was selected before the modeling process as the most relevant metric given that it encompasses all possible outcomes, as opposed to the other three metrics which leave out at least one possible outcome from their evaluation. 
+The performance of each model is evaluated on four core statistical measures (f1 score, accuracy, precision, and recall), in addition to displaying a confusion matrix for the test data. F1 was selected before the modeling process as the most relevant metric given that it encompasses all possible outcomes, as opposed to the other three metrics which leave out at least one possible outcome from their evaluation.
 
 
 ---
@@ -137,7 +137,7 @@ The confusion matrix below shows the performance on the holdout data (left) and 
 
 ### Feature Importance
 
-Although XG boost models are notoriously difficult to extract meaningful feature importance data from, the plot below does provide an indication per the SHAP summary plot. 
+Although XG boost models are notoriously difficult to extract meaningful feature importance data from, the plot below does provide an indication per the SHAP summary plot.
 
 <img src="https://github.com/sethschober/Predicting-Political-Revolutions/blob/main/report/figures/shap_summary_plot.png" width="1000">
 
@@ -153,7 +153,7 @@ To bring some meaning to the SHAP summary plot, it is worth noting that:
 1. Countries with low  executive constraint ("Unlimited Authority") are more strongly correlated with a protest overturning the regime.
 2. Higher turnouts to protests are associated with regime transitions. However, the data is somewhat split: even very small protests can be associated with regime transition.
 3. There is a less distinct divide in the relationship between the length of time a country has been autocratic vs. democratic than in other metrics. That said, the feature remains a strong predictor.
-4. Regime transitions happen somewhat consistently across the size of governing bodies. 
+4. Regime transitions happen somewhat consistently across the size of governing bodies.
 5. Protests in countries with new executive leadership are less likely to lead to regime change than countries with a long-ruling leader.
 
 
@@ -165,9 +165,9 @@ To bring some meaning to the SHAP summary plot, it is worth noting that:
 
 
 ## Conclusion
-Overall, this analysis successfully completes its objective. It creates and tunes a model that helps predict whether a given protest will lead to a regime transition within one year. This incredibly valuable tool can be used by political scientists to better understand regime transitions, including my investigating the model further than was conducted in this analysis. In addition, the model and its findings can be used for proactive or preventative measures by either side of government. With a very strong performing model, it can be trusted to give an accurate estimate of changes to come. 
+Overall, this analysis successfully completes its objective. It creates and tunes a model that helps predict whether a given protest will lead to a regime transition within one year. This incredibly valuable tool can be used by political scientists to better understand regime transitions, including my investigating the model further than was conducted in this analysis. In addition, the model and its findings can be used for proactive or preventative measures by either side of government. With a very strong performing model, it can be trusted to give an accurate estimate of changes to come.
 
-Going forward, this project allows for easy growth as more data is released. Each of the three primary datasets receive regular updates, and this new information can easily be incorporated in order to expand the temporal scope of the project and with more data comes to potential for stronger performance. 
+Going forward, this project allows for easy growth as more data is released. Each of the three primary datasets receive regular updates, and this new information can easily be incorporated in order to expand the temporal scope of the project and with more data comes to potential for stronger performance.
 
 ### Next Steps
 A powerful next step could be to investigate this data using time series analyses. Specifically, it would be valuable to understand how protest outcomes are affected by protests before it.

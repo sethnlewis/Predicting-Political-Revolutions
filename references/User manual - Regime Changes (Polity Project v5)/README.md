@@ -2,7 +2,7 @@
 
 **The Polity Project v5d**
 
-This folder contains the data dictionary for the above-mentioned dataset. It is used as the primary reference for any questions about the definition and formatting of variables, among many other important use cases. 
+This folder contains the data dictionary for the above-mentioned dataset. It is used as the primary reference for any questions about the definition and formatting of variables, among many other important use cases.
 
 
 
